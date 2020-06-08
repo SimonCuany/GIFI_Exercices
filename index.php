@@ -5,54 +5,7 @@
  * Date   : 08.06.2020
  */
 
-require(".constant.php");
-
-function getPDO()
-{
-    require ".constant.php";
-    $dbh = new PDO('mysql:host=' . $dbhost . ';dbname=' . $dbname, $user, $pass);
-    return $dbh;
-
-
-    function GetExam()
-    {
-        try {
-            $dbh = getPDO();
-            $query = 'SELECT * FROM app_pfinfo.evaluation;'; //initalise the Query variable and the commande to execute
-            $statement = $dbh->prepare($query);//Prepare Query
-            $statement->execute();
-            $queryResult = $statement->fetchAll(); //prepare result for client
-            $dbh = null;
-            return $queryResult;
-
-        } catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() . "<br/>";
-
-        }
-    }
-
-    function GetStudent()
-    {
-
-        try {
-            $dbh = getPDO();
-            $query = 'SELECT * FROM app_pfinfo.person where role = 0;'; //initalise the Query variable and the commande to execute
-
-            $statement = $dbh->prepare($query);//Prepare Query
-            $statement->execute();
-            $queryResult = $statement->fetchAll(); //prepare result for client
-            $dbh = null;
-            return $queryResult;
-
-        } catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() . "<br/>";
-
-        }
-
-
-    }
-}
-
+require("database.php");
 
 ?>
 <!doctype html>
@@ -66,13 +19,11 @@ function getPDO()
     <label for="Exam">Examen</label><br>
     <select name="Exam" id="Exam">
         <option value="Exam">
-
             <?php
-
 
             ?>
         </option>
-        
+
     </select>
     <br>
     <label for="Student">Eleve</label><br>
