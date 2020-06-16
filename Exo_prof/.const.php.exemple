@@ -1,0 +1,11 @@
+<?php
+
+
+$user = "toto";
+
+$pass = "totopassword";
+
+$dbhost='totohost';
+$dbname='totodatabase';
+$debug = false; // enable or disable the debug mode (display var_dump(), ... if enabled).
+?>
